@@ -76,12 +76,17 @@
             margin: 3rem 10%;
         }
 
-        .sum_flex_box,.step_flex_box{
+        .sum_flex_box,
+        .step_flex_box,
+        .size_flex_box,
+        .parity_flex_box,
+        .prime_flex_box {
             display: flex;
             flex-wrap: wrap
         }
 
-        .sum_num,.step_num {
+        .sum_num,
+        .step_num {
             display: block;
             width: 1.3rem;
             height: 1.3rem;
@@ -93,9 +98,22 @@
             color: #888888;
             font-size: 0.6rem;
         }
-        
-        .btn_box .cancel{
+
+        .btn_box .cancel {
             margin-top: 0.7rem
+        }
+
+        .size_type,
+        .parity_type,
+        .prime_type {
+            width: 2.2rem;
+            height: 1.4rem;
+            line-height: 1.4rem;
+            margin: 0.25rem 0.65rem;
+            text-align: center;
+            background: #eee;
+            font-size: 0.6rem;
+            color: #888
         }
 
 
@@ -211,24 +229,52 @@
         </div>
         <!---------------------------------跨度过滤-------------------------------->
         <div class="step_box box">
-                <h5>跨度选择</h5>
-                <div class="step_flex_box">
-                        <span @click="set_step($event)" :class='[step == 0&& step != "" ? "step_num active" : "step_num"]'>0</span>
-                        <span @click="set_step($event)" :class='[step == 1 ? "step_num active" : "step_num"]'>1</span>
-                        <span @click="set_step($event)" :class='[step == 2 ? "step_num active" : "step_num"]'>2</span>
-                        <span @click="set_step($event)" :class='[step == 3 ? "step_num active" : "step_num"]'>3</span>
-                        <span @click="set_step($event)" :class='[step == 4 ? "step_num active" : "step_num"]'>4</span>
-                        <span @click="set_step($event)" :class='[step == 5 ? "step_num active" : "step_num"]'>5</span>
-                        <span @click="set_step($event)" :class='[step == 6 ? "step_num active" : "step_num"]'>6</span>
-                        <span @click="set_step($event)" :class='[step == 7 ? "step_num active" : "step_num"]'>7</span>
-                        <span @click="set_step($event)" :class='[step == 8 ? "step_num active" : "step_num"]'>8</span>
-                        <span @click="set_step($event)" :class='[step == 9 ? "step_num active" : "step_num"]'>9</span>
-        
-                </div>
+            <h5>跨度选择</h5>
+            <div class="step_flex_box">
+                <span @click="set_step($event)" :class='[step == 0 && step != "" ? "step_num active" : "step_num"]'>0</span>
+                <span @click="set_step($event)" :class='[step == 1 ? "step_num active" : "step_num"]'>1</span>
+                <span @click="set_step($event)" :class='[step == 2 ? "step_num active" : "step_num"]'>2</span>
+                <span @click="set_step($event)" :class='[step == 3 ? "step_num active" : "step_num"]'>3</span>
+                <span @click="set_step($event)" :class='[step == 4 ? "step_num active" : "step_num"]'>4</span>
+                <span @click="set_step($event)" :class='[step == 5 ? "step_num active" : "step_num"]'>5</span>
+                <span @click="set_step($event)" :class='[step == 6 ? "step_num active" : "step_num"]'>6</span>
+                <span @click="set_step($event)" :class='[step == 7 ? "step_num active" : "step_num"]'>7</span>
+                <span @click="set_step($event)" :class='[step == 8 ? "step_num active" : "step_num"]'>8</span>
+                <span @click="set_step($event)" :class='[step == 9 ? "step_num active" : "step_num"]'>9</span>
+
             </div>
-
-
-        <div class="button button-raised button-fill color-red filter">开始缩水</div>
+        </div>
+        <!---------------------------------大小过滤-------------------------------->
+        <div class="size_box box">
+            <h5>大小选择</h5>
+            <div class="size_flex_box">
+                <span @click="set_size($event)" data-type='0' :class="[size == 0 && size !='' ? 'size_type active' : 'size_type']">大大大</span>
+                <span @click="set_size($event)" data-type='1' :class="[size == 1 ? 'size_type active' : 'size_type']">大大小</span>
+                <span @click="set_size($event)" data-type='2' :class="[size == 2 ? 'size_type active' : 'size_type']">大小大</span>
+                <span @click="set_size($event)" data-type='3' :class="[size == 3 ? 'size_type active' : 'size_type']">小大大</span>
+            </div>
+        </div>
+        <!---------------------------------奇偶过滤-------------------------------->
+        <div class="parity_box box">
+            <h5>奇偶选择</h5>
+            <div class="parity_flex_box">
+                <span @click="set_parity($event)" data-type='0' :class="[parity == 0 && parity !='' ? 'parity_type active' : 'parity_type']">奇奇奇</span>
+                <span @click="set_parity($event)" data-type='1' :class="[parity == 1 ? 'parity_type active' : 'parity_type']">奇奇偶</span>
+                <span @click="set_parity($event)" data-type='2' :class="[parity == 2 ? 'parity_type active' : 'parity_type']">奇偶奇</span>
+                <span @click="set_parity($event)" data-type='3' :class="[parity == 3 ? 'parity_type active' : 'parity_type']">偶奇奇</span>
+            </div>
+        </div>
+        <!---------------------------------质合过滤-------------------------------->
+        <div class="prime_box box">
+            <h5>质合选择</h5>
+            <div class="prime_flex_box">
+                <span @click="set_prime($event)" data-type='0' :class="[prime == 0 && prime !='' ? 'prime_type active' : 'prime_type']">质质质</span>
+                <span @click="set_prime($event)" data-type='1' :class="[prime == 1 ? 'prime_type active' : 'prime_type']">质质合</span>
+                <span @click="set_prime($event)" data-type='2' :class="[prime == 2 ? 'prime_type active' : 'prime_type']">质合质</span>
+                <span @click="set_prime($event)" data-type='3' :class="[prime == 3 ? 'prime_type active' : 'prime_type']">合质质</span>
+            </div>
+        </div>
+        <div @click='filter()' class="button button-raised button-fill color-red filter">开始缩水</div>
     </div>
 </body>
 <script src="js/framework7.min.js"></script>
@@ -252,16 +298,16 @@
     // chose_:胆码
     // sum_:和值
     // step_:跨度
+    // parity:奇偶
     var app = new Vue({
         el: '#app',
         data: {
-            // arr: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-            // odd: ['1', '3', '5', '7', '9'],
-            // even: ['0', '2', '4', '6', '8'],
-            // prime_n: ['1', '2', '3', '5', '7'],
-            // composite_n: ['0', '4', '6', '8', '9'],
-            // big:[ '5', '6', '7', '8', '9'],
-            // small:['0', '1', '2', '3', '4'],
+            odd: ['1', '3', '5', '7', '9'],
+            even: ['0', '2', '4', '6', '8'],
+            prime_n: ['1', '2', '3', '5', '7'],
+            composite_n: ['0', '4', '6', '8', '9'],
+            big: ['5', '6', '7', '8', '9'],
+            small: ['0', '1', '2', '3', '4'],
             hundreds: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
             tens: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
             units: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
@@ -269,34 +315,41 @@
             tens_status: true,
             units_status: true,
             sum: '',
-            step:''
+            step: '',
+            size: '',
+            parity: '',
+            prime: '',
+            sum_array: [],
+            step_array: [],
+            answer: []
 
         },
         methods: {
             hundreds_change: function (event) {
-                event.target.className = this.toggleClass(event.target.className, 'active');
                 if (event.target.className.split(" ").indexOf('active') == -1) {
                     this.hundreds.push(event.target.innerText)
                 } else {
                     this.hundreds.splice(this.hundreds.indexOf(event.target.innerText), 1)
                 }
+                event.target.className = this.toggleClass(event.target.className, 'active');
+
             },
             tens_change: function (event) {
-                event.target.className = this.toggleClass(event.target.className, 'active');
                 if (event.target.className.split(" ").indexOf('active') == -1) {
                     this.tens.push(event.target.innerText)
                 } else {
                     this.tens.splice(this.tens.indexOf(event.target.innerText), 1)
                 }
+                event.target.className = this.toggleClass(event.target.className, 'active');
 
             },
             units_change: function (event) {
-                event.target.className = this.toggleClass(event.target.className, 'active');
                 if (event.target.className.split(" ").indexOf('active') == -1) {
                     this.units.push(event.target.innerText)
                 } else {
                     this.units.splice(this.units.indexOf(event.target.innerText), 1)
                 }
+                event.target.className = this.toggleClass(event.target.className, 'active');
 
             },
             toggleClass: function (className, replaceClass) {
@@ -360,11 +413,232 @@
                     this.step = event.target.innerText;
                 }
             },
+            set_size: function (event) {
+                if (event.target.className.split(" ").indexOf('active') != '-1') {
+                    event.target.className = 'size_type';
+                    this.size = '';
+                } else {
+                    this.size = event.target.getAttribute('data-type');
+                }
+            },
+            set_parity: function (event) {
+                if (event.target.className.split(" ").indexOf('active') != '-1') {
+                    event.target.className = 'parity_type';
+                    this.parity = '';
+                } else {
+                    this.parity = event.target.getAttribute('data-type');
+                }
+            },
+            set_parity: function (event) {
+                if (event.target.className.split(" ").indexOf('active') != '-1') {
+                    event.target.className = 'parity_type';
+                    this.parity = '';
+                } else {
+                    this.parity = event.target.getAttribute('data-type');
+                }
+            },
+            set_prime: function (event) {
+                if (event.target.className.split(" ").indexOf('active') != '-1') {
+                    event.target.className = 'prime_type';
+                    this.prime = '';
+                } else {
+                    this.prime = event.target.getAttribute('data-type');
+                }
+            },
+            new_arr: function (arr, type_arr) {
+                var new_arr = [];
+                for (var i in arr) {
+                    for (var t in type_arr) {
+                        if (arr[i].indexOf(type_arr[t]) != '-1') {
+                            new_arr.push(arr[i])
+                        }
+                    }
+                }
+                return new_arr
+            },
+             all_arr: function (hundreds, tens, units) {
+                var sum_array = [];
+                for (var h in hundreds) {
+                    for (var t in tens) {
+                        for (var u in units) {
+                            var s = Number(hundreds[h]) + Number(tens[t]) + Number(units[u]);
+                            var ss = hundreds[h] + tens[t] + units[u]
+                                sum_array.push(ss.split(''))
+                        }
+                    }
+                }
+                
+                if (this.step == '' && this.sum == '') {
+                    for (var i in sum_array) {
+                        this.answer.push(sum_array[i].toString().replace(/\,+/g, ''))
+                    }
+
+                }
+                 
+            },
+            sum_arr: function (hundreds, tens, units, sum) {
+                var sum_array = [];
+                for (var h in hundreds) {
+                    for (var t in tens) {
+                        for (var u in units) {
+                            var s = Number(hundreds[h]) + Number(tens[t]) + Number(units[u]);
+                            var ss = hundreds[h] + tens[t] + units[u]
+                            if (s == sum) {
+                                sum_array.push(ss.split(''))
+                            }
+                        }
+                    }
+                }
+                if (this.step == '') {
+                    for (var i in sum_array) {
+                        this.answer.push(sum_array[i].toString().replace(/\,+/g, ''))
+                    }
+
+                }
+
+            },
+            step_arr: function (hundreds, tens, units, step) {
+                var step_array = [];
+
+                for (var h in hundreds) {
+                    for (var t in tens) {
+                        for (var u in units) {
+                            var ss = hundreds[h] + tens[t] + units[u]
+                            step_array.push(ss)
+                        }
+                    }
+                }
+
+                var dataIntArr = [];//保存转换后的整型字符串 
+
+                for (var i in step_array) {
+                    var dataStrArr = step_array[i].split("");//分割成字符串数组           
+                    dataIntArr.push(dataStrArr.map(function (data) {
+                        return +data;
+                    }))
+
+                }
+                var step_array_num = []
+                for (var d in dataIntArr) {
+                    var max = Math.max.apply(null, dataIntArr[d]);
+                    var min = Math.min.apply(null, dataIntArr[d]);
+                    if (max - min == step) {
+                        step_array_num.push(dataIntArr[d].toString().replace(/\,+/g, ''))
+                    }
+
+                }
+
+
+                if (this.sum_array.length != 0) {
+                    var sum_array = []
+                    for (var i in this.sum_array) {
+                        sum_array.push(this.sum_array[i].toString().replace(/\,+/g, ''))
+                    }
+                    console.log(sum_array)
+                    console.log(step_array_num)
+                    for (var s in sum_array) {
+                        for (var i in step_array_num) {
+                            if (sum_array[s].indexOf(step_array_num[i]) != '-1') {
+                                this.answer.push(step_array_num[i])
+                            }
+                        }
+                    }
+                } else {
+                    this.answer = step_array_num
+                }
+            },
+            filter: function () {
+                // 过滤大小
+                if (this.size != '') {
+                    if (this.size == '0') {
+                        this.hundreds = this.new_arr(this.hundreds, this.big);
+                        this.tens = this.new_arr(this.tens, this.big);
+                        this.units = this.new_arr(this.units, this.big);
+                    }
+                    if (this.size == '1') {
+                        this.hundreds = this.new_arr(this.hundreds, this.big);
+                        this.tens = this.new_arr(this.tens, this.big);
+                        this.units = this.new_arr(this.units, this.small);
+                    }
+                    if (this.size == '2') {
+                        this.hundreds = this.new_arr(this.hundreds, this.big);
+                        this.tens = this.new_arr(this.tens, this.small);
+                        this.units = this.new_arr(this.units, this.big);
+                    }
+                    if (this.size == '3') {
+                        this.hundreds = this.new_arr(this.hundreds, this.small)
+                        this.tens = this.new_arr(this.tens, this.big)
+                        this.units = this.new_arr(this.units, this.big)
+                    }
+                }
+                // 过滤奇偶
+                if (this.parity != '') {
+                    if (this.parity == '0') {
+                        this.hundreds = this.new_arr(this.hundreds, this.odd);
+                        this.tens = this.new_arr(this.tens, this.odd);
+                        this.units = this.new_arr(this.units, this.odd);
+                    }
+                    if (this.parity == '1') {
+                        this.hundreds = this.new_arr(this.hundreds, this.odd);
+                        this.tens = this.new_arr(this.tens, this.odd);
+                        this.units = this.new_arr(this.units, this.even);
+                    }
+                    if (this.parity == '2') {
+                        this.hundreds = this.new_arr(this.hundreds, this.odd);
+                        this.tens = this.new_arr(this.tens, this.even);
+                        this.units = this.new_arr(this.units, this.odd);
+                    }
+                    if (this.parity == '3') {
+                        this.hundreds = this.new_arr(this.hundreds, this.even)
+                        this.tens = this.new_arr(this.tens, this.odd)
+                        this.units = this.new_arr(this.units, this.odd)
+                    }
+                }
+                // 过滤质合
+                if (this.prime != '') {
+                    if (this.prime == '0') {
+                        this.hundreds = this.new_arr(this.hundreds, this.prime_n);
+                        this.tens = this.new_arr(this.tens, this.prime_n);
+                        this.units = this.new_arr(this.units, this.prime_n);
+                    }
+                    if (this.prime == '1') {
+                        this.hundreds = this.new_arr(this.hundreds, this.prime_n);
+                        this.tens = this.new_arr(this.tens, this.prime_n);
+                        this.units = this.new_arr(this.units, this.composite_n);
+                    }
+                    if (this.prime == '2') {
+                        this.hundreds = this.new_arr(this.hundreds, this.prime_n);
+                        this.tens = this.new_arr(this.tens, this.composite_n);
+                        this.units = this.new_arr(this.units, this.prime_n);
+                    }
+                    if (this.prime == '3') {
+                        this.hundreds = this.new_arr(this.hundreds, this.composite_n)
+                        this.tens = this.new_arr(this.tens, this.prime_n)
+                        this.units = this.new_arr(this.units, this.prime_n)
+                    }
+                }
+                //和值
+                if (this.sum != '') {
+                    this.sum_arr(this.hundreds, this.tens, this.units, this.sum)
+                }
+                //跨度
+                if (this.step != '') {
+                    this.step_arr(this.hundreds, this.tens, this.units, this.step)
+                }
+                
+                this.all_arr(this.hundreds, this.tens, this.units)
+                
+                console.log(this.answer)
+
+                if (this.answer.length == 0) {
+                    alert('结果无，请重新选择!');
+                }
+
+            }
+
 
         }
     })
-
-
 </script>
 
 </html>
