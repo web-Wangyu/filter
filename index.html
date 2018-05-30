@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="css/framework7.material.css">
     <style>
         body {
-            width: 100%;
+            width: 15rem;
             min-height: 100%;
             background: #f0f0f0;
-            padding: 20px 0
+            padding: 0.3rem 0.5rem
         }
 
         .box {
-            padding: 10px 15px;
+            padding: 0.3rem 0.5rem;
             background: #fff;
             margin-top: 0.3rem;
         }
@@ -51,13 +51,13 @@
 
         .num {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             width: 1.5rem;
             height: 1.5rem;
             border-radius: 0.75rem;
             text-align: center;
             line-height: 1.5rem;
-            margin: 2px 6px;
+            margin: 0.2rem 0.27rem;
             background: #eee;
             color: #888888
         }
@@ -88,11 +88,15 @@
             line-height: 1.3rem;
             text-align: center;
             background: #eee;
-            margin: 0.16rem;
+            margin: 0.16rem 0.35rem;
             border-radius: 0.2rem;
             color: #888888;
+            font-size: 0.6rem;
         }
-
+        
+        .btn_box .cancel{
+            margin-top: 0.7rem
+        }
 
 
         .active {
@@ -125,7 +129,7 @@
                 </span>
                 <div class="hundreds_btn btn_box">
                     <button @click="all($event)" data-type="hundreds" class="button button-raised button-fill color-red">全选</button>
-                    <button @click="cancel($event)" data-type="hundreds" class="button button-raised">取消</button>
+                    <button @click="cancel($event)" data-type="hundreds" class="button button-raised cancel">取消</button>
                 </div>
             </div>
             <div class="tens num_box">
@@ -146,7 +150,7 @@
                 </span>
                 <div class="tens_btn btn_box">
                     <button @click="all($event)" data-type="tens" class="button button-raised button-fill color-red">全选</button>
-                    <button @click="cancel($event)" data-type="tens" class="button button-raised">取消</button>
+                    <button @click="cancel($event)" data-type="tens" class="button button-raised cancel">取消</button>
                 </div>
             </div>
             <div class="units num_box">
@@ -167,7 +171,7 @@
                 </span>
                 <div class="units_btn btn_box">
                     <button @click="all($event)" data-type="units" class="button button-raised button-fill color-red">全选</button>
-                    <button @click="cancel($event)" data-type="units" class="button button-raised">取消</button>
+                    <button @click="cancel($event)" data-type="units" class="button button-raised cancel">取消</button>
                 </div>
             </div>
         </div>
@@ -244,7 +248,7 @@
     // tens:十位
     // units:个位
     // kill_:杀号
-    // _status:修改全选取消状态
+    // _status:修改 cancel全选取消状态
     // chose_:胆码
     // sum_:和值
     // step_:跨度
