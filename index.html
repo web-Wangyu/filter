@@ -11,13 +11,69 @@
             body{
                 width: 100%;
                 min-height: 100%;
-                background: #f0f0f0
+                background: #f0f0f0;
+                padding: 20px 0
+            }
+            .num_box{
+                padding: 10px 15px;
+                background: #fff
+            }
+            h5{
+                font-size: 12px;
+                color:#888
+            }
+            .hudreds{
+                display: flex;
+                margin-top: 10px
+            }
+            .left{
+                display:flex;
+                font-size: 14px;
+                width:25px;
+                /* line-height: 50%; */
+                align-items: center;
+                text-align: center;
+            }
+            .hudreds_num{
+                flex-grow: 1;
+                display:flex;
+                flex-wrap: wrap
+
+            }
+            .num{
+                display: block;
+                width: 28px;
+                height: 28px;
+                border-radius: 14px;
+                text-align: center;
+                line-height: 28px;
+                margin: 2px 5px;
+                background: #eee
             }
         </style>
     </head>
     <body>
             <div id="app">
-                
+                <div class="num_box">
+                    <h5>请选择投注号码</h5>
+                    <div class="hudreds">
+                        <span class="left">
+                            百位
+                        </span>
+                        <span class="hudreds_num">
+                            <span @click="clickchange($event)" class="num">0</span>
+                            <span @click="clickchange($event)" class="num">1</span>
+                            <span @click="clickchange($event)" class="num">2</span>
+                            <span @click="clickchange($event)" class="num">3</span>
+                            <span @click="clickchange($event)" class="num">4</span>
+                            <span @click="clickchange($event)" class="num">5</span>
+                            <span @click="clickchange($event)" class="num">6</span>
+                            <span @click="clickchange($event)" class="num">7</span>
+                            <span @click="clickchange($event)" class="num">8</span>
+                            <span @click="clickchange($event)" class="num">9</span>
+                        </span>
+                    </div>
+                </div>
 
 
             </div>
@@ -47,6 +103,20 @@
                 tens:[],
                 units:[],
             },
+            methods:{
+                clickchange:function(event){
+                    console.log(event)
+                    event.target.className = this.toggleClass(event.target.className,'active')
+                },
+                toggleClass:function(className,replaceClass){
+                    if(className.split(" ").indexOf(replaceClass)!=-1){
+                        className = className.replace(replaceClass,'')
+                    }else{
+                        className+=" "+replaceClass;
+                    }
+                    return className;
+                }
+            }
         })
 
     
